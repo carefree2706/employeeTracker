@@ -41,4 +41,4 @@
 
 # Video demo
 
-![Demo Video](https://drive.google.com/file/d/1fC7r2Xs-_PBYXy9hArSuRFBQ15aJBFlX/view?usp=sharing)
+![video](https://drive.google.com/file/d/1fC7r2Xs-_PBYXy9hArSuRFBQ15aJBFlX/view?usp=sharing)
