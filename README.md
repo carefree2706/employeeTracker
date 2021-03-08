@@ -41,4 +41,4 @@
 
 # Video demo
 
-![video](https://drive.google.com/file/d/1fC7r2Xs-_PBYXy9hArSuRFBQ15aJBFlX/view?usp=sharing)
+* video demo of CMS (https://drive.google.com/file/d/1fC7r2Xs-_PBYXy9hArSuRFBQ15aJBFlX/view?usp=sharing)
