@@ -1,0 +1,25 @@
+{
+  "name": "employeetracker",
+  "version": "1.0.0",
+  "description": "employee tracker",
+  "main": "app.js",
+  "scripts": {
+    "test": "N/A"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carefree2706/employeeTracker.git"
+  },
+  "author": "Donald Wu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carefree2706/employeeTracker/issues"
+  },
+  "homepage": "https://github.com/carefree2706/employeeTracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "express": "^4.17.1",
+    "inquirer": "^8.0.0",
+    "mysql": "^2.18.1"
+  }
+}
