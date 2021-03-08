@@ -13,6 +13,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Start our server so that it can begin listening to client requests.
+app.listen(PORT, function () {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+});
+
+
 const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -29,10 +36,10 @@ connection.connect(function (err) {
 
     console.log("connected as id " + connection.threadId);
 
-    initTracker();
+    option();
 });
 
-function initTracker() {
+function option() {
     inquirer
         .prompt({
             name: "action",
@@ -165,7 +172,7 @@ function deleteDepartment() {
                 }
             );
 
-            initTracker();
+            option();
         });
 }
 
@@ -213,7 +220,7 @@ function deleteRole() {
                 }
             );
 
-            initTracker();
+            option();
         });
 }
 
@@ -240,7 +247,7 @@ function deleteEmployee() {
                 }
             );
 
-            initTracker();
+            option();
         });
 }
 
@@ -310,7 +317,7 @@ function addDepartment() {
                     if (err) throw err;
                     console.log("New department added!\n");
                     // Call updateProduct AFTER the INSERT completes
-                    initTracker();
+                    option();
                 }
             );
         });
@@ -352,7 +359,7 @@ function addRole() {
                     if (err) throw err;
                     console.log("New role added!\n");
                     // Call updateProduct AFTER the INSERT completes
-                    initTracker();
+                    option();
                 }
             );
         });
@@ -396,7 +403,7 @@ function addEmployee() {
                     if (err) throw err;
                     console.log("New role added!\n");
                     // Call updateProduct AFTER the INSERT completes
-                    initTracker();
+                    option();
                 }
             );
         });
@@ -441,7 +448,7 @@ function viewAll() {
                     break;
             }
 
-            initTracker();
+            option();
         });
 }
 
@@ -475,8 +482,3 @@ function displayAllDepartments() {
     });
 }
 
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function () {
-    // Log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + PORT);
-});
