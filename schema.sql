@@ -23,4 +23,9 @@ role_id INT,
 manager_id INT
 );
 
+SELECT * FROM roles;
+SELECT * FROM employee;
 
+SELECT title, firstName, lastName, salary
+FROM roles
+LEFT JOIN employee ON role.id = role.id;
