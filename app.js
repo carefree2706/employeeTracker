@@ -12,9 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function () {
-  // Log (server-side) when our server has started
+
+app.listen(PORT, function () { 
   console.log("Server listening on: http://localhost:" + PORT);
 });
 
@@ -215,7 +214,7 @@ function deleteRole() {
     .then((answer) => {
       console.log("Deleting role...\n");
 
-      // Deletes role from table
+     
       connection.query(
         "DELETE FROM roles WHERE ?",
         {
