@@ -23,12 +23,7 @@ role_id INT,
 manager_id INT
 );
 
-SELECT * FROM roles, employee, department
 
-
-SELECT id, title , first_name, salary
-FROM roles
-LEFT JOIN employee ON roles.role_id = roles.id;
 
 INSERT INTO department (department_name) VALUES
 ("Trainer"), 
@@ -52,3 +47,10 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES
 ("Black ", "Widow", 3, 3),
 ("Iron", "Man", 1, 3);
 
+
+SELECT * FROM roles, employee, department
+
+
+SELECT id, title , first_name, salary
+FROM roles
+LEFT JOIN employee ON roles.role_id = roles.id;
