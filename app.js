@@ -126,6 +126,36 @@ function option() {
         });
 }
 
+function displayAllEmployees() {
+    let query = "SELECT * FROM employee ";
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+
+        console.log("\n\n ** Employee list ** \n");
+        console.table(res);
+    });
+}
+
+function displayAllRoles() {
+    let query = "SELECT * FROM roles ";
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+
+        console.log("\n\n **  Role list ** \n");
+        console.table(res);
+    });
+}
+
+function displayAllDepartments() {
+    let query = "SELECT * FROM department ";
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+
+        console.log("\n\n **  Department list ** \n");
+        console.table(res);
+    });
+}
+
 function deleteDepartment() {
     // display department table so user can easily view all IDs
     displayAllDepartments();
@@ -153,7 +183,7 @@ function deleteDepartment() {
                 }
             );
 
-            // Update the roles table so that roles that were assigned to this now deleted department are updated to have a department id of '0' which signifies that they are now unassigned to a department
+            
             connection.query(
                 "UPDATE roles SET ? WHERE ?",
                 [
@@ -167,7 +197,7 @@ function deleteDepartment() {
                 function (err, res) {
                     if (err) throw err;
                     console.log(
-                        "Roles that were assigned to this department have been updated to '0' which signifies that they are now unassigned to a department.\n"
+                        "Roles that were assigned to this department have been updated.\n"
                     );
                 }
             );
@@ -184,7 +214,7 @@ function deleteRole() {
         .prompt({
             name: "roleId",
             type: "input",
-            message: "Enter the ID of the role you want to delete",
+            message: "Enter the ID of the role you want to delete/remove",
         })
         .then((answer) => {
             console.log("Deleting role...\n");
@@ -197,11 +227,11 @@ function deleteRole() {
                 },
                 function (err, res) {
                     if (err) throw err;
-                    console.log("Department deleted!\n");
+                    console.log("Department deleted/removed!\n");
                 }
             );
 
-            // Update the employee table so that employees that were assigned to this now deleted role are updated to have a role id of '0' which signifies that they are now unassigned to a department
+            
             connection.query(
                 "UPDATE employee SET ? WHERE ?",
                 [
@@ -215,7 +245,7 @@ function deleteRole() {
                 function (err, res) {
                     if (err) throw err;
                     console.log(
-                        "Employees that were assigned to this role have been updated to '0' which signifies that they are now unassigned to a role.\n"
+                        "Employees that were assigned to this role have been updated.\n"
                     );
                 }
             );
@@ -225,7 +255,6 @@ function deleteRole() {
 }
 
 function deleteEmployee() {
-    // display department table so user can easily view all IDs
     displayAllEmployees();
 
     inquirer
@@ -253,8 +282,6 @@ function deleteEmployee() {
 
 function updateRole() {
     let employeeId;
-
-    // display employee table so user can easily view all IDs
     displayAllEmployees();
 
     inquirer
@@ -266,7 +293,7 @@ function updateRole() {
         .then((answer) => {
             employeeId = answer.employeeId;
 
-            // display roles table so user can easily decide select a role ID
+           
             displayAllRoles();
 
             inquirer
@@ -291,8 +318,7 @@ function updateRole() {
                         function (err, res) {
                             if (err) throw err;
                             console.log("Employee role updated!\n");
-                            // Call updateProduct AFTER the INSERT completes
-                            initTracker();
+                            option();
                         }
                     );
                 });
@@ -315,8 +341,7 @@ function addDepartment() {
                 },
                 function (err, res) {
                     if (err) throw err;
-                    console.log("New department added!\n");
-                    // Call updateProduct AFTER the INSERT completes
+                    console.log("New department added!\n");               
                     option();
                 }
             );
@@ -358,7 +383,7 @@ function addRole() {
                 function (err, res) {
                     if (err) throw err;
                     console.log("New role added!\n");
-                    // Call updateProduct AFTER the INSERT completes
+                    
                     option();
                 }
             );
@@ -402,7 +427,7 @@ function addEmployee() {
                 function (err, res) {
                     if (err) throw err;
                     console.log("New role added!\n");
-                    // Call updateProduct AFTER the INSERT completes
+                    
                     option();
                 }
             );
@@ -415,7 +440,7 @@ function viewAll() {
             name: "table",
             type: "list",
             message:
-                "Would you like to view all departments, roles, or employees?",
+                "Would you like to view all available departments,roles and employees?",
             choices: [
                 {
                     name: "Departments",
@@ -452,33 +477,4 @@ function viewAll() {
         });
 }
 
-function displayAllEmployees() {
-    let query = "SELECT * FROM employee ";
-    connection.query(query, (err, res) => {
-        if (err) throw err;
-
-        console.log("\n\n ** Full Employee list ** \n");
-        console.table(res);
-    });
-}
-
-function displayAllRoles() {
-    let query = "SELECT * FROM roles ";
-    connection.query(query, (err, res) => {
-        if (err) throw err;
-
-        console.log("\n\n ** Full Role list ** \n");
-        console.table(res);
-    });
-}
-
-function displayAllDepartments() {
-    let query = "SELECT * FROM department ";
-    connection.query(query, (err, res) => {
-        if (err) throw err;
-
-        console.log("\n\n ** Full Department list ** \n");
-        console.table(res);
-    });
-}
 
